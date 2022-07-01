@@ -60,9 +60,11 @@ function sketch(url, res) {
             }
             p.fill(this.colTwo, this.satTwo, this.brightTwo);
 
-            // Save and return GIF
+            // Save and return GIF.
+            // Note: There are dedicated libraries for creating and optimizing GIFs
+            //       that are worth considering if someone wants to do this for real.
             setTimeout(() =>
-                p.saveFrames(canvas, "out", { quality: 10 }, 5, 60)
+                p.saveFrames(canvas, "out", { quality: 10 }, 2, 60)
                     .then(() => res.sendFile("out.gif", { root: 'out' })), 1);
         }
 
