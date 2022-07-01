@@ -1,0 +1,7 @@
+{
+  "name": "p5-node-gif-recorder",
+  "dependencies": {
+    "express": "^4.15.2",
+    "node-p5": "^1.0.4"
+  }
+}
