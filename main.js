@@ -64,7 +64,7 @@ function sketch(url, res) {
 
             // Save and return GIF.
             setTimeout(() =>
-                p.saveFrames(canvas, "out", { quality: 10 }, 3, 60)
+                p.saveFrames(canvas, "out", { quality: 10 }, 2, 60)
                     .then(() => res.sendFile("out.gif", { root: 'out' })), 1);
         }
 
