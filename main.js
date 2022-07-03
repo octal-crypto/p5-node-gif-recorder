@@ -7,6 +7,7 @@ express().get("/", (req, res) => p5.createSketch(sketch(req.url, res))).listen(3
 function sketch(url, res) {
     return p => {
         p.setup = () => {
+            p.frameRate(1)
             const contents = url.split('x=')
             const result = contents[1].split('&t=')
             this.tokenId = parseInt(result[0]);
@@ -61,10 +62,8 @@ function sketch(url, res) {
             p.fill(this.colTwo, this.satTwo, this.brightTwo);
 
             // Save and return GIF.
-            // Note: There are dedicated libraries for creating and optimizing GIFs
-            //       that are worth considering if someone wants to do this for real.
             setTimeout(() =>
-                p.saveFrames(canvas, "out", { quality: 10 }, 2, 60)
+                p.saveFrames(canvas, "out", { quality: 10 }, 5, 60)
                     .then(() => res.sendFile("out.gif", { root: 'out' })), 1);
         }
 
