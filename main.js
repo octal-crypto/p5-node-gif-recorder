@@ -1,7 +1,6 @@
 const express = require("express");
 const p5 = require("node-p5");
 
-
 express().get("/", (req, res) => p5.createSketch(sketch(req.url, res))).listen(process.env.PORT || 3000);
 
 // Snowcrash p5js code
@@ -64,7 +63,7 @@ function sketch(url, res) {
 
             // Save and return GIF.
             setTimeout(() =>
-                p.saveFrames(canvas, "out", { quality: 10 }, 4, 24) // idk why 24 FPS, just testing params
+                p.saveFrames(canvas, "out", { quality: 10 }, 4, 20) // idk why 20 FPS, just testing params
                     .then(() => res.sendFile("out.gif", { root: 'out' })), 1);
         }
 
