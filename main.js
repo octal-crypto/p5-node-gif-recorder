@@ -1,7 +1,8 @@
 const express = require("express");
 const p5 = require("node-p5");
 
-express().get("/", (req, res) => p5.createSketch(sketch(req.url, res))).listen(3000);
+
+express().get("/", (req, res) => p5.createSketch(sketch(req.url, res))).listen(process.env.PORT || 3000);
 
 // Snowcrash p5js code
 function sketch(url, res) {
