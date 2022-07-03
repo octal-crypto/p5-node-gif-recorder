@@ -8,7 +8,7 @@ express().get("/", (req, res) => p5.createSketch(sketch(req.url, res))).listen(p
 function sketch(url, res) {
     return p => {
         p.setup = () => {
-            p.frameRate(1)
+            p.frameRate(1); // IDK why, seems to render faster without affecting speed
             const contents = url.split('x=')
             const result = contents[1].split('&t=')
             this.tokenId = parseInt(result[0]);
@@ -64,7 +64,7 @@ function sketch(url, res) {
 
             // Save and return GIF.
             setTimeout(() =>
-                p.saveFrames(canvas, "out", { quality: 10 }, 4, 24)
+                p.saveFrames(canvas, "out", { quality: 10 }, 4, 24) // idk why 24 FPS, just testing params
                     .then(() => res.sendFile("out.gif", { root: 'out' })), 1);
         }
 
